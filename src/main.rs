@@ -14,7 +14,7 @@ const KEYWORD: &str = "namah shivaya";
 impl EventHandler for Bot {
     async fn message(&self, ctx: Context, msg: Message) {
         if msg.content.to_lowercase().contains(KEYWORD) {
-            if let Err(e) = msg.channel_id.say(&ctx.http, "njanokke oru prayam ulla aal alle").await {
+            if let Err(e) = msg.channel_id.say(&ctx.http, "Enne kollathirikkan pattuo? Illa alley?").await {
                 error!("Error sending message: {:?}", e);
             }
         }
