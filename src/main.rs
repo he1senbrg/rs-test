@@ -13,9 +13,15 @@ const KEYWORD: &str = "namah shivaya";
 #[async_trait]
 impl EventHandler for Bot {
     async fn message(&self, ctx: Context, msg: Message) {
-        if msg.content.to_lowercase().contains(KEYWORD) {
-            if let Err(e) = msg.channel_id.say(&ctx.http, "Enne kollathirikkan pattuo? Illa alley?").await {
-                error!("Error sending message: {:?}", e);
+        if msg.author.bot {
+            return;
+        }
+        
+        if msg.channel_id == 1281182109670572054 {
+            if msg.content.to_lowercase().contains(KEYWORD) {
+                if let Err(e) = msg.channel_id.say(&ctx.http, "Enne kollathirikkan pattuo? Illa alley?").await {
+                    error!("Error sending message: {:?}", e);
+                }
             }
         }
     }
